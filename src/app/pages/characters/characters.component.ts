@@ -42,8 +42,8 @@ export class CharactersComponent implements OnInit {
 
   private characterSrv = inject(CharacterService);
   private messageService = inject(MessageService);
-  public characters = signal<CharactersDTO[]>([]);
-  public carousel = viewChild<NguCarousel<CharactersDTO>>('carousel');
+  public readonly characters = signal<CharactersDTO[]>([]);
+  public readonly carousel = viewChild<NguCarousel<CharactersDTO>>('carousel');
   public carouselConfig: NguCarouselConfig = {
     grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
     loop: false,

@@ -35,12 +35,12 @@ import {filter, Observable} from 'rxjs';
 })
 export class LoginComponent extends FormEvent implements OnInit {
 
-  public saveInProgress = signal(false);
+  public readonly saveInProgress = signal(false);
   private authService = inject(AuthService);
   private messageService = inject(MessageService);
   private autofill = inject(AutofillMonitor);
   private router = inject(Router);
-  public email = viewChild<HTMLInputElement, ElementRef<HTMLInputElement>>('email', {read: ElementRef});
+  public readonly email = viewChild<HTMLInputElement, ElementRef<HTMLInputElement>>('email', {read: ElementRef});
   public loginForm = new FormGroup<ControlsOf<LoginRequestDTO>>({
     email: new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]),
     password: new FormControl('', [Validators.minLength(PASSWORD_MIN_LENGTH), Validators.required]),

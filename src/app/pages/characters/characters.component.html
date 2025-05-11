@@ -73,8 +73,8 @@
 <app-footer />
 <ng-template #tools>
   <ul class="points d-flex flex-row" NguCarouselPoint>
-    @for (image of carousel()?.pointNumbers(); track pointIndex; let pointIndex = $index) {
-      <li class="point {{ pointIndex === carousel()?.activePoint() ? 'active' : '' }}" (click)="carousel()?.moveTo(pointIndex)"></li>
+    @for (image of carousel()?.pointNumbers(); track $index) {
+      <li class="point {{ $index === carousel()?.activePoint() ? 'active' : '' }}" (click)="carousel()?.moveTo($index)"></li>
     }
   </ul>
   <div class="d-flex flex-rows">
