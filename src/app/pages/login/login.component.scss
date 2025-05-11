@@ -1,0 +1,37 @@
+@use "./backgroundImage";
+
+:host {
+  section {
+    @include backgroundImage.background-image($imageName: "bg_1");
+  }
+
+  h1 {
+    color: var(--white);
+    font-family: Distant-Galaxy, sans-serif;
+    font-size: 70px;
+    font-weight: 400;
+    margin: 1rem 0 5.5rem;
+    text-align: center;
+
+    @media screen and (max-width: 768px) {
+      font-size: 60px;
+    }
+  }
+
+  h2 {
+    color: var(--white);
+    font-family: Star-Jedi, sans-serif;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  form {
+    margin-top: 7.5rem;
+    width: 450px;
+
+    .yellowButton {
+      margin: 0 auto;
+      width: 60%;
+    }
+  }
+}

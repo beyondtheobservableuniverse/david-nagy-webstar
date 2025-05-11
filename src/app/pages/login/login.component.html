@@ -1,0 +1,52 @@
+<section class="d-flex justify-content-center">
+  <form [formGroup]="loginForm" class="d-flex flex-column">
+    <h2>Webstar</h2>
+    <h1>Frontend</h1>
+    <mat-form-field class="mb-2">
+      <label>Felhasználónév</label>
+      <input #email [readonly]="saveInProgress()" autofocus [formControl]="loginForm.controls.email" matInput type="email" />
+      @if (loginForm.controls.email.errors?.['pattern']) {
+        <mat-error>
+          Kérjük adjon meg helyes
+          <b>Felhasználónevet</b>
+        </mat-error>
+      }
+      @if (loginForm.controls.email.errors?.['required']) {
+        <mat-error>
+          <b>Felhasználónév</b>
+          megadása kötelező
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="mb-2">
+      <label>Jelszó</label>
+      <input
+        #password
+        [readonly]="saveInProgress()"
+        autocomplete="on"
+        [formControl]="loginForm.controls.password"
+        matInput
+        type="password" />
+      @if (loginForm.controls.email.errors?.['minlength']) {
+        <mat-error>
+          <b>Jelszó</b>
+          túl rövid
+        </mat-error>
+      }
+      @if (loginForm.controls.email.errors?.['required']) {
+        <mat-error>
+          <b>Jelszó</b>
+          megadása kötelező
+        </mat-error>
+      }
+    </mat-form-field>
+    <button (click)="login()" [disabled]="saveInProgress() || !loginForm.dirty" class="yellowButton mt-3" mat-button>
+      @if (!saveInProgress()) {
+        Belépés
+      } @else {
+        <mat-spinner [diameter]="20" class="mx-auto" />
+      }
+    </button>
+  </form>
+</section>
+<app-footer />

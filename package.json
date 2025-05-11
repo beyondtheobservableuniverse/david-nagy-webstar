@@ -1,0 +1,49 @@
+{
+  "name": "david-nagy-webstar",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "stylelint": "npx stylelint \"**/src/**/*.scss\" --config=.stylelintrc.json --cache --fix",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "19.2.10",
+    "@angular/cdk": "19.2.15",
+    "@angular/common": "19.2.10",
+    "@angular/compiler": "19.2.10",
+    "@angular/core": "19.2.10",
+    "@angular/forms": "19.2.10",
+    "@angular/material": "19.2.15",
+    "@angular/platform-browser": "19.2.10",
+    "@angular/platform-browser-dynamic": "19.2.10",
+    "@angular/router": "19.2.10",
+    "@ngneat/until-destroy": "10.0.0",
+    "@ngu/carousel": "19.0.0",
+    "bootstrap": "5.3.6",
+    "rxjs": "7.8.0",
+    "tslib": "2.3.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "19.2.11",
+    "@angular/cli": "19.2.11",
+    "@angular/compiler-cli": "19.2.10",
+    "jasmine-core": "5.2.0",
+    "karma": "6.4.0",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.0",
+    "karma-jasmine": "5.1.0",
+    "karma-jasmine-html-reporter": "2.1.0",
+    "postcss": "8.5.2",
+    "postcss-scss": "4.0.9",
+    "prettier": "3.5.3",
+    "stylelint": "16.19.1",
+    "stylelint-order": "6.0.4",
+    "stylelint-prettier": "5.0.3",
+    "stylelint-scss": "6.12.0",
+    "typescript": "5.8.2"
+  }
+}

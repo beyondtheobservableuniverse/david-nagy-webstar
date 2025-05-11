@@ -1,0 +1,207 @@
+@use "./backgroundImage";
+
+:host {
+  section {
+    overflow-y: auto;
+    @include backgroundImage.background-image($imageName: "bg_2");
+
+    .container {
+      padding-top: 80px;
+
+      .widget {
+        min-width: 200px;
+
+        .side,
+        .star {
+          display: block;
+        }
+
+        .side {
+          background-color: var(--white);
+          border: 7px solid var(--white);
+          height: 36px;
+          width: 36px;
+        }
+
+        .darkSide {
+          background-color: transparent;
+        }
+
+        .star {
+          background-color: var(--yellow);
+          height: 50px;
+          width: 50px;
+        }
+
+        label,
+        span {
+          line-height: 1.4;
+        }
+
+        label {
+          color: var(--yellow);
+          font-family: Poppins-Bold, sans-serif;
+          font-size: 16px;
+          text-transform: uppercase;
+        }
+
+        span {
+          color: var(--white);
+          font-family: Poppins-Black, sans-serif;
+          font-size: 20px;
+        }
+      }
+
+      .points {
+        list-style: none;
+        margin-right: 3rem;
+        padding: 0;
+
+        .point {
+          background-color: var(--gray);
+          border-radius: 50%;
+          cursor: pointer;
+          height: 5px;
+          width: 5px;
+
+          &:not(:last-of-type) {
+            margin-right: 0.7rem;
+          }
+        }
+
+        .active {
+          background-color: var(--white);
+
+          &:before {
+            border: 1px solid var(--white);
+            border-radius: 50%;
+            content: "";
+            display: block;
+            height: 12px;
+            margin: -4.5px 0 0 -4.5px;
+            width: 12px;
+          }
+        }
+      }
+
+      .leftRs,
+      .rightRs {
+        cursor: pointer;
+      }
+
+      .leftRs {
+        margin-right: 1.3rem;
+      }
+
+      .rightRs {
+        transform: rotate(180deg);
+      }
+
+      h1,
+      h2,
+      h3,
+      span,
+      .description {
+        color: var(--white);
+      }
+
+      h1 {
+        font-family: Star-Jedi, sans-serif;
+        font-size: 90px;
+        letter-spacing: 5px;
+        margin: 1.5rem 0;
+        white-space: pre-wrap;
+
+        @media screen and (max-width: 768px) {
+          font-size: 80px;
+          padding-left: 1rem;
+        }
+      }
+
+      h2 {
+        font-family: Poppins-Black, sans-serif;
+        font-size: 24px;
+        margin-bottom: 1rem;
+      }
+
+      .module {
+        h3 {
+          font-family: Poppins-Bold, sans-serif;
+          font-size: 18px;
+          margin-top: 0.5rem;
+        }
+
+        span {
+          display: block;
+          font-size: 16px;
+          margin-bottom: 0.7rem;
+          margin-top: 0.5rem;
+        }
+
+        button {
+          margin-bottom: 1.3rem;
+        }
+
+        &:not(:last-of-type) {
+          border-bottom: 1px solid var(--gray);
+        }
+      }
+
+      .description {
+        font-size: 16px;
+      }
+
+      ::ng-deep.ngucarousel {
+        .ngu-container,
+        .ngu-touch-container {
+          height: 100%;
+
+          @media screen and (max-width: 992px) {
+            height: 800px;
+          }
+
+          @media screen and (max-width: 768px) {
+            height: 600px;
+          }
+        }
+
+        .tile {
+          height: 100%;
+          position: relative;
+
+          img {
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+          }
+
+          &:before {
+            aspect-ratio: 1 / 1;
+            background-color: var(--yellow);
+            border-radius: 50%;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 450px;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 450px;
+            z-index: 0;
+
+            @media screen and (max-width: 500px) {
+              height: 350px;
+              width: 350px;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 992px) {
+        padding-bottom: 2rem;
+      }
+    }
+  }
+}

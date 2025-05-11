@@ -1,0 +1,12 @@
+<header class="container">
+  <ul class="d-flex justify-content-between">
+    <li class="d-flex align-items-center">
+      <img alt="User" ngSrc="/images/user.png" width="20" height="20" priority />
+      <span class="ms-3">{{ authData.user.lastName }} {{ authData.user.firstName }}</span>
+    </li>
+    <li (click)="logout()" class="d-flex align-items-center">
+      <span class="me-3 d-none d-sm-block">Űrhajó elhagyása</span>
+      <img alt="Logout" ngSrc="/images/logout.png" width="20" height="20" priority />
+    </li>
+  </ul>
+</header>

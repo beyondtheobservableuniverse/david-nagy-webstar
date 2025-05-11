@@ -1,0 +1,16 @@
+:host {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+
+  p {
+    color: var(--white);
+    margin: 0;
+    padding: 1rem;
+    text-align: right;
+
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
+  }
+}

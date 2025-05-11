@@ -1,0 +1,168 @@
+@use "./bootstrap";
+@use "./fontFace";
+@use "@angular/material" as mat;
+
+$app-theme-primary: mat.m2-define-palette(mat.$m2-indigo-palette, A400, A100, A700);
+$app-theme-accent: mat.m2-define-palette(mat.$m2-indigo-palette);
+$app-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$app-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $app-theme-primary,
+      accent: $app-theme-accent,
+      warn: $app-theme-warn,
+    ),
+  )
+);
+@include mat.elevation-classes;
+@include mat.app-background;
+@include fontFace.font-face($fileName: Starjedi, $familyName: "Star-Jedi");
+@include fontFace.font-face($fileName: SfDistantGalaxyAltoutline-e2Bp, $familyName: "Distant-Galaxy");
+@include fontFace.font-face($fileName: Poppins-Regular, $familyName: Poppins);
+@include fontFace.font-face($fileName: Poppins-Medium, $familyName: "Poppins-Medium", $fontWeight: 500);
+@include fontFace.font-face($fileName: Poppins-Bold, $familyName: "Poppins-Bold", $fontWeight: 700);
+@include fontFace.font-face($fileName: Poppins-ExtraBold, $familyName: "Poppins-ExtraBold", $fontWeight: 800);
+@include fontFace.font-face($fileName: Poppins-Black, $familyName: "Poppins-Black", $fontWeight: 900);
+
+:root {
+  --black: #000000;
+  --darkGray: #333333;
+  --gray: #8a8a8a;
+  --white: #ffffff;
+  --yellow: #f7b500;
+  --red: #ff3232;
+  --blue: #00d2ff;
+  --green: #2ecc71;
+  --inputHeight: 45px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  height: 5px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--darkGray);
+  border: none;
+  -webkit-border-radius: var(--cardBlockRadius);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  height: 100%;
+  line-height: 1.2;
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-align: left;
+  -webkit-text-size-adjust: 100%;
+
+  :focus {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+button {
+  -webkit-appearance: button;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+}
+
+.yellowButton,
+.outlineButton {
+  border: 2px solid var(--yellow) !important;
+  border-radius: 8px !important;
+  font-family: Poppins-Bold, sans-serif !important;
+  font-size: 16px !important;
+  height: var(--inputHeight) !important;
+}
+
+.yellowButton {
+  background-color: var(--yellow) !important;
+}
+
+.outlineButton {
+  color: var(--white) !important;
+}
+
+.mat-mdc-progress-spinner {
+  circle {
+    stroke: var(--white) !important;
+  }
+}
+
+.mat-mdc-form-field {
+  label {
+    color: var(--white);
+    display: block;
+    font-family: Poppins-Bold, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .mat-mdc-form-field-infix {
+    border: none;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+
+    .mat-mdc-input-element {
+      background-color: var(--white) !important;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px !important;
+      height: var(--inputHeight) !important;
+      padding: 0.6375em !important;
+      text-align: center;
+    }
+  }
+
+  .mdc-line-ripple {
+    display: none !important;
+  }
+
+  .mat-mdc-form-field-error {
+    color: var(--red) !important;
+    text-align: center;
+  }
+}
+
+.mat-mdc-snack-bar-container {
+  color: var(--white);
+  margin-bottom: 1rem !important;
+  min-width: 420px !important;
+  position: relative;
+
+  .mdc-snackbar__surface {
+    border-radius: 8px !important;
+    min-width: 100% !important;
+  }
+  @media screen and (max-width: 768px) {
+    min-width: calc(100% - 2rem) !important;
+  }
+}
+
+.errorBar {
+  .mdc-snackbar__surface {
+    background-color: var(--red) !important;
+  }
+}
+
+.loader {
+  height: 500px;
+}
+
+.container {
+  padding: 0 1rem;
+  width: auto;
+}

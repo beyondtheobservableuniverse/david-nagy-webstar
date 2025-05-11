@@ -1,0 +1,102 @@
+<app-header />
+<section>
+  @defer (when characters().length) {
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-row">
+          <div class="widget d-flex flex-row">
+            <div class="side {{ characters()[carousel.activePoint()].side === 'DARK' ? 'darkSide' : '' }}"></div>
+            <div class="d-flex flex-column ps-3">
+              <label>Oldal</label>
+              <span>{{ characters()[carousel.activePoint()].side | side }}</span>
+            </div>
+          </div>
+          <div class="widget d-flex flex-row">
+            <div class="star d-flex justify-content-center align-items-center">
+              <img alt="star" ngSrc="/images/star.png" width="30" height="30" priority />
+            </div>
+            <div class="d-flex flex-column ps-3">
+              <label>Különleges Erő</label>
+              <span>{{ characters()[carousel.activePoint()].ability.power }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-none col-lg-6 d-lg-flex flex-row align-items-center justify-content-lg-end">
+          <ng-container *ngTemplateOutlet="tools" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 flex-column">
+          @if (characters()[carousel.activePoint()]) {
+            <h1 [innerHTML]="characters()[carousel.activePoint()].name | breakWords"></h1>
+            <div class="description" [innerHTML]="characters()[carousel.activePoint()].description"></div>
+          }
+          <h2>Modulok</h2>
+          <div class="row g-0 module">
+            <div class="col-md-4">
+              <h3>Szimuláció</h3>
+            </div>
+            <div class="col-md-8">
+              <span>Válasz két karaktert ellentétes oldalakról</span>
+              <button class="outlineButton me-4" mat-button>Karakter kiválasztása</button>
+              <button class="yellowButton" mat-button>Küzdelem indítása</button>
+            </div>
+          </div>
+          <div class="row module mt-3">
+            <div class="col-sm-4">
+              <h3>CRUD kezelés</h3>
+            </div>
+            <div class="col-sm-8">
+              <span>Karakterszerkesztő megnyitása</span>
+              <button class="outlineButton me-4" mat-button>Karakter szerkesztése</button>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex col-lg-6 d-lg-none flex-row align-items-center justify-content-between mt-3">
+          <ng-container *ngTemplateOutlet="tools" />
+        </div>
+        <ngu-carousel #carousel class="col-lg-6 g-0 flex-column" [inputs]="carouselConfig" [dataSource]="characters()">
+          <ngu-tile *nguCarouselDef="let item; let index = index">
+            @if (characters()[index]) {
+              <img alt="character" ngSrc="/images/{{ characters()[index].id }}.png" width="500" height="500" priority />
+            }
+          </ngu-tile>
+        </ngu-carousel>
+      </div>
+    </div>
+  } @placeholder {
+    <div class="loader d-flex align-items-center justify-content-center">
+      <mat-spinner [diameter]="70" />
+    </div>
+  }
+</section>
+<app-footer />
+<ng-template #tools>
+  <ul class="points d-flex flex-row" NguCarouselPoint>
+    @for (image of carousel()?.pointNumbers(); track pointIndex; let pointIndex = $index) {
+      <li class="point {{ pointIndex === carousel()?.activePoint() ? 'active' : '' }}" (click)="carousel()?.moveTo(pointIndex)"></li>
+    }
+  </ul>
+  <div class="d-flex flex-rows">
+    <div class="leftRs d-flex flex-row align-items-center">
+      <img
+        (click)="
+          carousel()?.moveTo(carousel()?.activePoint() === 0 ? characters().length : (carousel()?.activePoint() ?? characters().length) - 1)
+        "
+        alt="arrow left"
+        ngSrc="/images/arrow_circle.png"
+        width="50"
+        height="50"
+        priority />
+    </div>
+    <div class="rightRs d-flex flex-row align-items-center">
+      <img
+        (click)="carousel()?.moveTo(carousel()?.activePoint() === characters().length ? 0 : (carousel()?.activePoint() ?? 0) + 1)"
+        alt="arrow right"
+        ngSrc="/images/arrow_circle.png"
+        width="50"
+        height="50"
+        priority />
+    </div>
+  </div>
+</ng-template>

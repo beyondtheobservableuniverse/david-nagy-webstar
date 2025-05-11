@@ -1,0 +1,9 @@
+@mixin background-image($imageName, $position: left) {
+  background-image: url("/images/#{$imageName}.webp");
+  background-position: $position center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 100vh;
+  width: 100%;
+}
