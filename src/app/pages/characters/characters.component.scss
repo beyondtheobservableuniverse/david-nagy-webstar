@@ -170,10 +170,11 @@
           position: relative;
 
           img {
+            display: block;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             position: absolute;
-            width: 100%;
+            width: auto;
             z-index: 1;
           }
 
